@@ -2,6 +2,7 @@ package rs.ac.bg.fon.CinemaServer.operation.film;
 
 import rs.ac.bg.fon.CinemaCommon.domain.Film;
 import rs.ac.bg.fon.CinemaCommon.domain.Term;
+import rs.ac.bg.fon.CinemaServer.controller.Controller;
 import rs.ac.bg.fon.CinemaServer.operation.AbstractGenericOperation;
 
 public class CreateFilm extends AbstractGenericOperation{
@@ -21,7 +22,7 @@ public class CreateFilm extends AbstractGenericOperation{
         if(film.getTerms().size() > 0){
             for(Term t : film.getTerms()){
                 t.setFilm(film);
-                //Controller.validateTerm(t);
+                Controller.validateTerm(t);
                 
                 repository.add(t); 
             }
