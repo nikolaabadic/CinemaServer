@@ -23,7 +23,7 @@ public abstract class AbstractGenericOperation {
     /**
      * Executes the system operation after stating a transaction a checking the preconditions. 
      * @param param Object that is sent as request argument.
-     * @throws Exception java.lang.Exception when the preconditions are not pleased or when there is an Exception thrown by the repository method.	
+     * @throws Exception When the preconditions are not pleased or when there is an Exception thrown by the repository method.	
      */
     public final void execute(Object param) throws Exception {
         try {
@@ -42,31 +42,21 @@ public abstract class AbstractGenericOperation {
 
     /**
      * Starts a transaction before the system operation is executed.
-     * @throws Exception
+     * @throws Exception If there were any connection errors.
      */
     private void startTransaction() throws Exception {
         repository.connect();
     }
 
     // Operation-specific method
-    /**
-     * Verifies if all preconditions are pleased and the system operation can be executed.
-     * @param param Object that is sent as request argument.
-     * @throws Exception java.lang.Exception thrown during the preconditions verification.
-     */
     protected abstract void preconditions(Object param) throws Exception;
 
     // Operation-specific method
-    /**
-     * Executes the system operation.
-     * @param param Object that is sent as request argument.
-     * @throws Exception java.lang.Exception thrown during the system operation execution or by the repository method.
-     */
     protected abstract void executeOperation(Object param) throws Exception;
     
     /**
      * Commits the transaction.
-     * @throws Exception java.lang.Exception if there were any connection errors.
+     * @throws Exception If there were any connection errors.
      */
     private void commitTransaction() throws Exception {
         repository.commit();
@@ -74,7 +64,7 @@ public abstract class AbstractGenericOperation {
 
     /**
      * Annuls the operation results if there were any errors.
-     * @throws Exception java.lang.Exception if there were any connection errors.
+     * @throws Exception If there were any connection errors.
      */
     private void rollbackTransaction() throws Exception {
         repository.rollback();
@@ -82,7 +72,7 @@ public abstract class AbstractGenericOperation {
 
     /**
      * Disconnects the database connection.
-     * @throws Exception
+     * @throws Exception If there were any connection errors.
      */
     private void disconnect() throws Exception {
         repository.disconnect();
