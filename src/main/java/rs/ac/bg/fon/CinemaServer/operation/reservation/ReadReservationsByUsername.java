@@ -7,18 +7,42 @@ import rs.ac.bg.fon.CinemaCommon.domain.Reservation;
 import rs.ac.bg.fon.CinemaCommon.domain.User;
 import rs.ac.bg.fon.CinemaServer.operation.AbstractGenericOperation;
 
+/**
+ * System operation that returns all reservations from the database which satisfies a particular condition about the reservation's owner username.
+ * @author Nikola Abadic
+ *
+ */
 public class ReadReservationsByUsername extends AbstractGenericOperation{
+	/**
+	 * List of reservations that will store the operation result.
+	 */
     private List<GenericEntity> list;
+    /**
+     * String which represents the SQL where condition.
+     */
     private String where;
 
+    /**
+     * Parameterized constructor that initializes a ReadReservationsByUsername objects and sets the where attribute value.
+     * @param where String which represents the SQL where condition.
+     */
     public ReadReservationsByUsername(String where) {
         this.where = where;
     }
        
+    /**
+     * Returns the list of reservations.
+     * @return List of reservations.
+     */
     public List<GenericEntity> getList(){
         return list;
     }
     
+    /**
+     * Verifies if the given parameter is not null and is a Reservation class object.
+     * @param param Object that is sent as request argument.
+     * @throws Exception If the given parameter is null or isn't a Reservation class object.
+     */
     @Override
     protected void preconditions(Object param) throws Exception {
         if (param == null || !(param instanceof Reservation)) {
@@ -26,6 +50,11 @@ public class ReadReservationsByUsername extends AbstractGenericOperation{
         }
     }
 
+    /**
+     * Executes the operation by calling the getAllLeftJoin method on the repository attribute.
+     * @param param Object that is sent as request argument.
+     * @throws Exception Thrown by the repository method if there were any errors.
+     */
     @Override
     protected void executeOperation(Object param) throws Exception {
         list = repository.getAllLeftJoin((Reservation)param,new User(),where);
