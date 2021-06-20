@@ -22,7 +22,6 @@ import rs.ac.bg.fon.CinemaCommon.domain.Reservation;
 import rs.ac.bg.fon.CinemaCommon.domain.Term;
 import rs.ac.bg.fon.CinemaCommon.domain.User;
 import rs.ac.bg.fon.CinemaServer.operation.AbstractGenericOperation;
-import rs.ac.bg.fon.CinemaServer.operation.film.CreateFilm;
 import rs.ac.bg.fon.CinemaServer.operation.reservation.CreateReservation;
 import rs.ac.bg.fon.CinemaServer.operation.reservation.DeleteReservation;
 import rs.ac.bg.fon.CinemaServer.operation.reservation.ReadReservations;
@@ -82,7 +81,7 @@ public class CreateReservationTest {
 	
 	@Test
 	void constructorTest() {
-		createReservation= new CreateFilm();
+		createReservation= new CreateReservation();
 		assertNotNull(createReservation);
 	}
 	
