@@ -18,7 +18,6 @@ import rs.ac.bg.fon.CinemaCommon.domain.Film;
 import rs.ac.bg.fon.CinemaCommon.domain.GenericEntity;
 import rs.ac.bg.fon.CinemaCommon.domain.User;
 import rs.ac.bg.fon.CinemaServer.operation.AbstractGenericOperation;
-import rs.ac.bg.fon.CinemaServer.operation.hall.ReadHalls;
 import rs.ac.bg.fon.CinemaServer.operation.user.ReadUsers;
 
 public class ReadUsersTest {
@@ -58,7 +57,7 @@ public class ReadUsersTest {
 	
 	@Test
 	void constructorTest() {
-		readUsers = new ReadHalls();
+		readUsers = new ReadUsers();
 		assertNotNull(readUsers);
 	}
 	
