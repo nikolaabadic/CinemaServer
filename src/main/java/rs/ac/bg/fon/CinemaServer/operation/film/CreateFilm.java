@@ -34,7 +34,7 @@ public class CreateFilm extends AbstractGenericOperation{
         
         Film film = (Film) param;
         film.setId(id);
-        if(film.getTerms().size() > 0){
+        if(film.getTerms() != null && film.getTerms().size() > 0){
             for(Term t : film.getTerms()){
                 t.setFilm(film);
                 Controller.validateTerm(t);
